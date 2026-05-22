@@ -59,9 +59,9 @@ cd LocalMind-AI-Chat
 Create a virtual environment and install the required Python packages:
 bash
 python -m venv .venv
-# On Windows:
+On Windows:
 .venv\Scripts\activate
-# On Linux/Mac:
+On Linux/Mac:
 source .venv/bin/activate
 
 pip install -r requirements.txt
