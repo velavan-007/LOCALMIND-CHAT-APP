@@ -190,7 +190,8 @@ def process_audio_mic(audio_filepath, history, session_id, endpoint, model, pdf_
 
 
 with gr.Blocks(title="LocalMind Chat App", theme=gr.themes.Soft()) as demo:
-    gr.Markdown("LocalMind Chat App")
+    gr.Markdown("<h1 style='font-size: 2.8rem; font-weight: 800; text-align: center; margin-bottom: 1.5rem; background: linear-gradient(90deg, #4f46e5, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: system-ui, -apple-system, sans-serif;'>LocalMind Chat App</h1>")
+    
     
     current_session = gr.State("new_session")
     
