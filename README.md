@@ -99,7 +99,7 @@ Once the server starts, open the provided local URL (usually http://127.0.0.1:78
 
 ## 🖥️ Main Chat Interface
 
-![Main Chat Interface]
+![Main Chat Interface](https://github.com/velavan-007/LOCALMIND-CHAT-APP/blob/main/Main%20Chat%20Interface.jpeg)
 
 ## 🎙️ Audio Interaction Feature
 
