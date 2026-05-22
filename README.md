@@ -2,7 +2,7 @@
 
 ## 📌 Project Introduction
 
-LOCALMIND-CHAT-APP is a powerful, locally-hosted AI chat application built using Python and Gradio.This project enables seamless interaction with both local Large Language Models (via Ollama) and cloud-based AI models (via OpenAI) using text, images, audio, and PDF documents.The application combines multimodal AI capabilities, Retrieval-Augmented Generation (RAG), local speech-to-text processing, and persistent chat history into a single modern interface.
+LOCALMIND-CHAT-APP is a powerful, locally-hosted AI chat application built using Python and Gradio.This project enables seamless interaction with both local Large Language Models (via Ollama) and cloud-based AI models (via OpenAI) using text, images, audio and PDF documents.The application combines multimodal AI capabilities, Retrieval-Augmented Generation (RAG), local speech-to-text processing, and persistent chat history into a single modern interface.
 
 ---
 
@@ -35,157 +35,32 @@ The primary objectives of this project are:
 ---
 
 # 🚀 Features
+- *Multimodal Interaction*: Chat seamlessly using text, images, audio (microphone or uploaded files), and PDFs.
+- *Local & Cloud Models*: Instantly switch between running models locally via [Ollama](https://ollama.com/) (privacy-first) or utilizing [OpenAI](https://openai.com/)'s powerful cloud APIs.
+- *Retrieval-Augmented Generation (RAG)*: Upload PDF documents and ask questions about their content. Uses ChromaDB and LangChain for chunking and vector storage.
+- *Local Audio Transcription*: Uses a local deployment of the Whisper model (via HuggingFace transformers) for completely private speech-to-text transcription.
+- *Persistent Chat History*: All conversations, media files, and settings are saved automatically in a SQLite database, allowing you to resume previous sessions anytime.
+- *Dynamic Configuration*: Adjust RAG chunk size, document retrieval limits, and chat memory length directly from the UI.
 
-## 4.1 Multimodal Interaction
 
-Supports interaction using:
-
-* Text Chat
-* Image Uploads
-* Audio Inputs
-* PDF Documents
-
----
-
-## 4.2 Local & Cloud Models
-
-Allows users to switch between:
-
-* Local AI models using Ollama
-* Cloud AI models using OpenAI APIs
-
----
-
-## 4.3 Retrieval-Augmented Generation (RAG)
-
-Enables PDF-based question answering by:
-
-* Extracting PDF content
-* Chunking text
-* Creating embeddings
-* Performing similarity search using ChromaDB
-
----
-
-## 4.4 Local Audio Transcription
-
-Uses the Whisper model for:
-
-* Speech-to-text conversion
-* Local/private audio processing
-* Audio normalization using FFmpeg
-
----
-
-## 4.5 Persistent Chat History
-
-Stores:
-
-* Chat messages
-* Images
-* Audio files
-* User configurations
-
-using SQLite database storage.
-
----
-
-## 4.6 Dynamic Configuration
-
-Allows dynamic adjustment of:
-
-* RAG chunk size
-* Retrieval limits
-* Chat memory settings
-
-through the UI.
 
 ---
 
 # 📁 Project Structure & Execution Flow
 
-## 5.1 Front-End & Entry Point
+### Front-End & Entry Point
+- *app.py*: The main entry point of the application. It runs the Gradio server, initializes the UI components, and routes all user interactions to the appropriate backend handlers. It maintains session states and updates the UI dynamically based on the interaction type (Text, PDF, Audio, or Image).
 
-### `app.py`
+### Core Handlers
+- *chat_api_handler.py*: Manages the core API communication. Contains handler classes (OllamaChatAPIHandler and OpenAIChatAPIHandler) that format prompts, manage multimodal inputs (like base64 image encoding), and handle streaming/non-streaming responses.
+- *audio_handler.py*: Responsible for speech-to-text. It captures audio input, normalizes it using ffmpeg and librosa (handling .webm to .wav conversions), and feeds it into the local whisper-small model.
+- *pdf_handler.py*: Uses pypdfium2 to extract raw text from PDF files, and LangChain's RecursiveCharacterTextSplitter to break the document down into configurable chunks before passing them to the Vector DB.
+- *vectordb_handler.py*: Manages the local vector database using ChromaDB. It uses Ollama's nomic-embed-text model to embed document chunks and provides similarity search functionality for the RAG pipeline.
 
-The main application file responsible for:
+### Data & Utility
+- *database_operations.py*: A robust, thread-safe SQLite wrapper that persists chat histories (messages table, storing texts and blobs) and UI configurations (settings table) across sessions.
+- *utils.py*: Contains helper functions for loading configurations, fetching available models from APIs, formatting timestamps, and timing function executions.
 
-* Running the Gradio server
-* Managing UI components
-* Handling session states
-* Routing user interactions
-
----
-
-## 5.2 Core Handlers
-
-### `chat_api_handler.py`
-
-Handles:
-
-* API communication
-* Prompt formatting
-* Image encoding
-* Streaming responses
-
-Supports:
-
-* OllamaChatAPIHandler
-* OpenAIChatAPIHandler
-
----
-
-### `audio_handler.py`
-
-Responsible for:
-
-* Speech-to-text processing
-* Audio normalization
-* `.webm` → `.wav` conversion
-* Whisper model integration
-
----
-
-### `pdf_handler.py`
-
-Handles:
-
-* PDF text extraction
-* Document chunking
-* LangChain text splitting
-
----
-
-### `vectordb_handler.py`
-
-Manages:
-
-* ChromaDB vector storage
-* Embedding generation
-* Similarity search for RAG pipeline
-
----
-
-## 5.3 Data & Utility
-
-### `database_operations.py`
-
-Provides:
-
-* Thread-safe SQLite operations
-* Chat history persistence
-* Configuration storage
-
----
-
-### `utils.py`
-
-Contains utility functions for:
-
-* Config loading
-* Timestamp formatting
-* Model fetching
-* Performance timing
 
 ---
 
@@ -225,7 +100,7 @@ https://ollama.com/
 ## Step 1: Clone the Repository
 
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/velavan-007/LOCALMIND-CHAT-APP/tree/main>
 cd LocalMind-AI-Chat
 ```
 
@@ -286,77 +161,7 @@ http://127.0.0.1:7860/
 
 ---
 
-# 💡 How It Works (Integration)
 
-## 9.1 Text Chat Workflow
-
-```text
-User Input
-   ↓
-app.py
-   ↓
-database_operations.py
-   ↓
-chat_api_handler.py
-   ↓
-Local / Cloud Model
-   ↓
-Save Response
-   ↓
-UI Update
-```
-
----
-
-## 9.2 Image Processing Workflow
-
-```text
-Image Upload
-   ↓
-app.py
-   ↓
-Base64 Conversion
-   ↓
-chat_api_handler.py
-   ↓
-Vision Model
-```
-
----
-
-## 9.3 Audio Processing Workflow
-
-```text
-Audio Input
-   ↓
-audio_handler.py
-   ↓
-FFmpeg Processing
-   ↓
-Whisper Model
-   ↓
-Transcribed Text
-```
-
----
-
-## 9.4 PDF Chat Workflow
-
-```text
-PDF Upload
-   ↓
-pdf_handler.py
-   ↓
-Text Chunking
-   ↓
-vectordb_handler.py
-   ↓
-Vector Embeddings
-   ↓
-Similarity Search
-   ↓
-Context Injection
-```
 
 ---
 
@@ -393,19 +198,5 @@ The application provides an efficient, private, and scalable AI chat experience 
 
 ---
 
-# 💡 Skills Demonstrated
-
-* Python Development
-* AI Application Development
-* Large Language Model Integration
-* Retrieval-Augmented Generation (RAG)
-* Speech-to-Text Processing
-* Vector Database Management
-* API Integration
-* SQLite Database Handling
-* UI Development with Gradio
-* Multimodal AI Systems
-* Prompt Engineering
-* Backend Development
 
 --- 
