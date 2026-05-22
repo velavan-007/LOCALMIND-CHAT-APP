@@ -2,10 +2,7 @@
 
 ## 📌 Project Introduction
 
-LOCALMIND-CHAT-APP is a powerful, locally-hosted AI chat application built using Python and Gradio.  
-This project enables seamless interaction with both local Large Language Models (via Ollama) and cloud-based AI models (via OpenAI) using text, images, audio, and PDF documents.
-
-The application combines multimodal AI capabilities, Retrieval-Augmented Generation (RAG), local speech-to-text processing, and persistent chat history into a single modern interface.
+LOCALMIND-CHAT-APP is a powerful, locally-hosted AI chat application built using Python and Gradio.This project enables seamless interaction with both local Large Language Models (via Ollama) and cloud-based AI models (via OpenAI) using text, images, audio, and PDF documents.The application combines multimodal AI capabilities, Retrieval-Augmented Generation (RAG), local speech-to-text processing, and persistent chat history into a single modern interface.
 
 ---
 
