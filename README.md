@@ -50,12 +50,12 @@ chat_sessions_database_path: "./chat_sessions/chat_sessions.db"
 3. *Ollama*: (Optional but recommended) Install [Ollama](https://ollama.com/) to run models completely locally.
 
 ### Step 1: Clone the Repository
-![bash git clone <your-repo-url> cd LocalMind-AI-Chat]
+bash git clone <your-repo-url> cd LocalMind-AI-Chat
 
 
 ### Step 2: Install Dependencies
 Create a virtual environment and install the required Python packages:
-[bash python -m venv .venv On Window]s: [.venv\Scripts\activate On Linux/Mac]: [source .venv/bin/activate]
+bash python -m venv .venv On Windows: .venv\Scripts\activate On Linux/Mac: source .venv/bin/activate
 
 pip install -r requirements.txt
 
