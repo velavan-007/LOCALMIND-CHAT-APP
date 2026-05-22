@@ -94,3 +94,13 @@ Once the server starts, open the provided local URL (usually http://127.0.0.1:78
 2. *Image Input*: User uploads image -> app.py detects image -> converts to base64 -> chat_api_handler.py packages it for Vision-capable models.
 3. *Audio Input*: User records audio -> audio_handler.py transcodes it via ffmpeg -> processes it through local Whisper model -> transcribed text is piped to the text chat workflow.
 4. *PDF Chat*: User uploads PDF -> pdf_handler.py chunks it -> vectordb_handler.py embeds and stores it -> Future questions retrieve relevant chunks and inject them as context into the prompt in chat_api_handler.py.
+
+# 📸 Project Screenshots
+
+## 🖥️ Main Chat Interface
+
+![Main Chat Interface](./Main%20Chat%20Interface.jpeg)
+
+## 🎙️ Audio Interaction Feature
+
+![Audio Interaction Feature](./Audio%20Interaction%20Feature.jpeg)
