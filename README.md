@@ -100,8 +100,8 @@ https://ollama.com/
 ## Step 1: Clone the Repository
 
 ```bash
-git clone <https://github.com/velavan-007/LOCALMIND-CHAT-APP/tree/main>
-cd LocalMind-AI-Chat
+git clone https://github.com/velavan-007/LOCALMIND-CHAT-APP.git
+cd LOCALMIND-CHAT-APP
 ```
 
 ---
